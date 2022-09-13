@@ -1,0 +1,1 @@
+CREATE TABLE tb_sales (id  bigserial not null, sellerName varchar(255), visited integer, deals integer, amount float8, date date, primary key (id));
