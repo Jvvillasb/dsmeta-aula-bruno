@@ -1,0 +1,70 @@
+.dsmeta-form-sales {
+  position: fixed;
+  width: 300px;
+  height: 400px;
+  right: 140px;
+  top: 300px;
+  z-index: 3;
+  background-color: #1b2531;
+  border-radius: 10px;
+
+}
+
+@media(max-width: 525px) {
+  .dsmeta-form-sales {
+  width: 295px;
+  right: 42px;
+  top: 160px;
+}
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.line-content {
+  width: 300px;
+  padding: 16px;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  width: 61%;
+  height: 25px;
+  background-color: #91b9e9;
+  border: 1px solid #384459;
+  border-radius: 5px;
+  color: #000000;
+  padding: 0 20px;
+  font-size: 18px;
+}
+
+.submit {
+  width: 50%;
+  height: 46px;
+  background-color: #b3d0f3;
+  border: 1px solid #384459;
+  border-radius: 5px;
+  color: #000000;
+  padding: 0 20px;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+@media(max-width: 525px) {
+  .dsmeta-form-sales {
+    width: 295px;
+    right: 42px;
+    top: 160px;
+  }
+}

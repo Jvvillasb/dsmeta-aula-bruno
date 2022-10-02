@@ -6,6 +6,10 @@ import { Sale } from "../../models/sale";
 import { BASE_URL } from "../../utils/request";
 import NotificationButton from '../NotificationButton';
 import './styles.css';
+import InsertSaleForm from "../forms";
+import CrudButton from "../crudButton";
+import DeleteButton from "../DeleteButton";
+import UpdateButton from "../UpdateButton";
 
 function SalesCard() {
 
@@ -22,14 +26,23 @@ function SalesCard() {
         const dmin = minDate.toISOString().slice(0, 10);
         const dmax = maxDate.toISOString().slice(0, 10);
 
-        axios.get(`${BASE_URL}/sales?minDate=${dmin}&maxDate=${dmax}`)
+        axios.get(`${BASE_URL}/sales?minDate=${dmin}&maxDate=${dmax}&page=0&size=10&sort=id,desc`)
             .then(response => {
                 setSales(response.data.content);
             });
     }, [minDate, maxDate])
 
+    const onChangeUpdateForm = () => {
+        axios.get(`${BASE_URL}/sales?page=0&size=10&sort=id,desc`).then(response => {
+            setSales(response.data.content);
+        });
+    };
+
+
+    
     return (
         <div className="dsmeta-card">
+            <CrudButton/>
             <h2 className="dsmeta-sales-title">Vendas</h2>
             <div>
                 <div className="dsmeta-form-control-container">
@@ -61,6 +74,8 @@ function SalesCard() {
                             <th className="show992">Vendas</th>
                             <th>Total</th>
                             <th>Notificar</th>
+                            <th>Atualizar</th>
+                            <th>Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,7 +90,17 @@ function SalesCard() {
                                     <td>R$ {sale.amount.toFixed(2)}</td>
                                     <td>
                                         <div className="dsmeta-red-btn-container">
-                                            <NotificationButton saleId={sale.id }/>
+                                            <NotificationButton saleId={ sale.id }/>
+                                        </div>
+                                    </td>  
+                                    <td>
+                                        <div className="dsmeta-red-btn-container">
+                                            <UpdateButton sale= { sale } saleId= { sale.id } />
+                                        </div>
+                                    </td>                                  
+                                    <td>
+                                        <div className="dsmeta-red-btn-container">
+                                            <DeleteButton saleId={ sale.id }/>
                                         </div>
                                     </td>
                                 </tr>

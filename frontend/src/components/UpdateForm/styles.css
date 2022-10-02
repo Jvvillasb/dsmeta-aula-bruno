@@ -1,0 +1,8 @@
+.dsmeta-form-update {
+  position: absolute;
+  top: 380px;
+  right: 320px;
+  background-color: #1b2531;
+  border-radius: 10px;
+  z-index: 3;
+}
