@@ -59,6 +59,12 @@
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
   cursor: pointer;
+  margin-right: 8px;
+}
+
+.dsmeta-form-buttons {
+  display: flex;
+  padding: 8px;
 }
 
 @media(max-width: 525px) {

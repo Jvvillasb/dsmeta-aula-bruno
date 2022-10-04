@@ -35,11 +35,12 @@ function UpdateForm(sale: Props, saleId: Props) {
       };
       window.location.reload();
     });
-    
+
   };
 
   return (!showModal && (
     <form className="dsmeta-form-update" onSubmit={handleSubmit(onSubmit)}>
+
       <div className="content">
         <label className="line-content">
           <div className="item">
@@ -71,7 +72,10 @@ function UpdateForm(sale: Props, saleId: Props) {
             <input {...register("visited", { required: true, value: visited })} className="input" placeholder={visited} />
           </div>
         </label>
-        <input type="submit" value="submit" className="submit" />
+        <div className="dsmeta-form-buttons">
+          <input type="submit" value="submit" className="submit" />
+          <button className="submit" onClick={() => setShowModal(true)}>Cancel</button>
+        </div>
       </div>
     </form>
   ))

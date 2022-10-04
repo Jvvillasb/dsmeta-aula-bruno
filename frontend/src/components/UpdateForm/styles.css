@@ -6,3 +6,8 @@
   border-radius: 10px;
   z-index: 3;
 }
+
+.dsmeta-form-buttons {
+  display: flex;
+  padding: 8px;
+}

@@ -22,8 +22,8 @@ function UpdateButton(sale: Props, saleId: number) {
   return (
     <div>
       <div className="dsmeta-btn dsmeta-green" onClick={() => handleClick()}><img src={icon} alt="Notificar" />
-       </div>
-      {showModal && <UpdateForm sale={sale} saleId={saleId}/>}
+      </div>
+      {showModal && <UpdateForm sale={sale} saleId={saleId} />}
     </div>
   )
 }

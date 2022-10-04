@@ -61,7 +61,7 @@ function insertSaleForm() {
             <input {...register("visited", { required: true })} className="input"/>
           </div>
         </label>
-        <input type="submit" value="submit" className="submit" />
+        <input type="submit" value="submit" className="submit"/>
       </div>
     </form>
   )
