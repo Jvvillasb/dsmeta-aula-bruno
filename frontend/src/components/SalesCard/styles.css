@@ -73,6 +73,10 @@
     display: none;
 }
 
+.dsmeta-name-table {
+    cursor: pointer;
+}
+
 @media (min-width: 576px) {
     .show576 {
         display: table-cell;

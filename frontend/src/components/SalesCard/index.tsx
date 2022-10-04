@@ -16,10 +16,20 @@ function SalesCard() {
     const min = new Date(new Date().setDate(new Date().getDate() - 365));
     const max = new Date();
 
+    var string ='';
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(max);
+    const [orderBy, setOrderBy] = useState('id');
+    const [order, setOrder] = useState(true);
 
     const [sales, setSales] = useState<Sale[]>([]);
+
+    if(order) {
+        string = 'asc';
+    }
+    else {
+        string = 'desc';
+    }
 
     useEffect(() => {
 
@@ -30,19 +40,26 @@ function SalesCard() {
             .then(response => {
                 setSales(response.data.content);
             });
-    }, [minDate, maxDate])
 
-    const onChangeUpdateForm = () => {
-        axios.get(`${BASE_URL}/sales?page=0&size=10&sort=id,desc`).then(response => {
+    }, [minDate, maxDate]);
+    
+    const handleClick = () => {
+        if(order) {
+            setOrder(false);
+        }
+        else {
+            setOrder(true);
+        }
+
+        axios.get(`${BASE_URL}/sales?page=0&size=10&sort=${orderBy},${string}`)
+        .then(response => {
             setSales(response.data.content);
         });
-    };
+    }
 
-
-    
     return (
         <div className="dsmeta-card">
-            <CrudButton/>
+            <CrudButton />
             <h2 className="dsmeta-sales-title">Vendas</h2>
             <div>
                 <div className="dsmeta-form-control-container">
@@ -51,6 +68,8 @@ function SalesCard() {
                         onChange={(date: Date) => setMinDate(date)}
                         className="dsmeta-form-control"
                         dateFormat="dd/MM/yyyy"
+                        disabledKeyboardNavigation
+                        withPortal
                     />
                 </div>
                 <div className="dsmeta-form-control-container">
@@ -59,6 +78,7 @@ function SalesCard() {
                         onChange={(date: Date) => setMaxDate(date)}
                         className="dsmeta-form-control"
                         dateFormat="dd/MM/yyyy"
+                        withPortal
                     />
                 </div>
             </div>
@@ -67,12 +87,12 @@ function SalesCard() {
                 <table className="dsmeta-sales-table">
                     <thead>
                         <tr>
-                            <th className="show992">ID</th>
-                            <th className="show576">Data</th>
-                            <th>Vendedor</th>
-                            <th className="show992">Visitas</th>
-                            <th className="show992">Vendas</th>
-                            <th>Total</th>
+                            <th className="show992"><a onClick={() => {setOrderBy('id'); handleClick()}} className="dsmeta-name-table">ID</a></th>
+                            <th className="show576"><a onClick={() => {setOrderBy('date'); handleClick()}} className="dsmeta-name-table">Data</a></th>
+                            <th><a onClick={() => {setOrderBy('sellerName'); handleClick()}} className="dsmeta-name-table">Vendedor</a></th>
+                            <th className="show992"><a className="dsmeta-name-table" onClick={() => {setOrderBy('visited'); handleClick()}}>Visitas</a></th>
+                            <th className="show992"><a className="dsmeta-name-table" onClick={() => {setOrderBy('deals'); handleClick()}}>Vendas</a></th>
+                            <th ><a onClick={() => {setOrderBy('amount'); handleClick()}} className="dsmeta-name-table">Total</a></th>
                             <th>Notificar</th>
                             <th>Atualizar</th>
                             <th>Excluir</th>
@@ -90,17 +110,17 @@ function SalesCard() {
                                     <td>R$ {sale.amount.toFixed(2)}</td>
                                     <td>
                                         <div className="dsmeta-red-btn-container">
-                                            <NotificationButton saleId={ sale.id }/>
+                                            <NotificationButton saleId={sale.id} />
                                         </div>
-                                    </td>  
+                                    </td>
                                     <td>
                                         <div className="dsmeta-red-btn-container">
-                                            <UpdateButton sale= { sale } saleId= { sale.id } />
+                                            <UpdateButton sale={sale} saleId={sale.id} />
                                         </div>
-                                    </td>                                  
+                                    </td>
                                     <td>
                                         <div className="dsmeta-red-btn-container">
-                                            <DeleteButton saleId={ sale.id }/>
+                                            <DeleteButton saleId={sale.id} />
                                         </div>
                                     </td>
                                 </tr>

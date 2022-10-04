@@ -1,5 +1,7 @@
 import UpdateForm from '../UpdateForm';
 import { useState } from "react";
+import icon from '../../assets/img/notification-icon.svg';
+import './styles.css';
 
 type Props = {
   sale: {};
@@ -19,7 +21,8 @@ function UpdateButton(sale: Props, saleId: number) {
 
   return (
     <div>
-      <div className="dsmeta-btn dsmeta-red" onClick={() => handleClick()}> </div>
+      <div className="dsmeta-btn dsmeta-green" onClick={() => handleClick()}><img src={icon} alt="Notificar" />
+       </div>
       {showModal && <UpdateForm sale={sale} saleId={saleId}/>}
     </div>
   )
