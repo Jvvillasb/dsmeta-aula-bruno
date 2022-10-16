@@ -24,7 +24,7 @@ public class SmsService {
 		String msg = "O vendedor " + sale.getSellerName() + " foi destaque em " + date
 			    + " com um total de R$ " + String.format("%.0f", sale.getAmount());
 		
-		Twilio.init("AC267921cd88ed16f67de59c51ba4e0724", "39462dc2a679c36ab52da632943eb40e");
+		Twilio.init("AC267921cd88ed16f67de59c51ba4e0724", "be800e2c259c31604577ab52851e336d");
 		
 		PhoneNumber to = new PhoneNumber("+5512996470064");
 		PhoneNumber from = new PhoneNumber("+19894743376");
