@@ -15,7 +15,7 @@ function crudButton () {
 
   return (
     <div className="dsmeta-group">
-      <button className="dsmeta-button" onClick={handleClicked}>Nova Venda</button>
+      <button className="dsmeta-button" onClick={handleClicked}>Novo Vendedor</button>
       {showModal && <InsertSaleForm/> }
     </div>
   )

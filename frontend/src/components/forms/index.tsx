@@ -33,35 +33,35 @@ function insertSaleForm() {
       <div className="content">
         <label className="line-content">
           <div className="item">
-            Amount:
+            Total Vendido:
             <input {...register("amount", { required: true })} className="input"/>
           </div>
         </label>
         <label className="line-content">
           <div className="item">
-            Date:
+            Data:
             <input {...register("date", { required: true })} className="input"/>
           </div>
         </label>
         <label className="line-content">
           <div className="item">
-            Deals:
+            Vendas:
             <input {...register("deals", { required: true })} className="input"/>
           </div>
         </label>
         <label className="line-content">
           <div className="item">
-            seller:
+            Vendedor:
             <input {...register("sellerName", { required: true })} className="input"/>
           </div>
         </label>
         <label className="line-content">
           <div className="item">
-            Visited:
+            Visitas:
             <input {...register("visited", { required: true })} className="input"/>
           </div>
         </label>
-        <input type="submit" value="submit" className="submit"/>
+        <input type="submit" value="Enviar" className="submit"/>
       </div>
     </form>
   )
